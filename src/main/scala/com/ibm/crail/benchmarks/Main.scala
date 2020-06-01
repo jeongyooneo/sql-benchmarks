@@ -28,8 +28,7 @@ object Main {
   def foo(x : Array[String]) = x.foldLeft("")((a,b) => a + b)
   
   def main(args : Array[String]) {
-    println( "Hello World!" )
-    println("concat arguments = " + foo(args))
+    // println("arguments = " + foo(args))
     val sb:StringBuilder = new StringBuilder
     val options = new ParseOptions()
     options.parse(args)
@@ -71,8 +70,10 @@ object Main {
     val s = System.nanoTime()
     val result = test.execute()
     val e = System.nanoTime()
+    // Thread.sleep(10000000L)
+
     sb.append("-------------------------------------------------" + "\n")
-    sb.append("Test           : " + test.plainExplain() + "\n")
+    sb.append("Test           : " + test.plainExplain() + " " + (e - s)/1000000 + " msec" + "\n")
     sb.append("Action         : " + options.getAction.toString + "\n")
     sb.append("Execution time : " + (e - s)/1000000 + " msec" + "\n")
     sb.append("Result         : " +  result + "\n")
